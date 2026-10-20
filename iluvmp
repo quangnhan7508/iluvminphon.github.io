@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi Người Yêu Nhân Ngày 20/10 💖</title>
+    <!-- Thêm font chữ ngọt ngào Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            font-family: 'Quicksand', sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Hiệu ứng nền trái tim rơi */
+        .heart-fall {
+            position: absolute;
+            top: -10vh;
+            color: rgba(255, 77, 109, 0.6);
+            font-size: 20px;
+            user-select: none;
+            z-index: 1;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Hộp quà / Khung chính */
+        .container {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            max-width: 420px;
+            width: 90%;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            color: #d81b60;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            font-size: 16px;
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            min-height: 80px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            height: 50px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.05);
+            background-color: #e63956;
+        }
+
+        #noBtn {
+            background-color: #e0e0e0;
+            color: #555;
+            position: absolute;
+        }
+
+        /* Màn hình chúc mừng sau khi bấm Đồng Ý */
+        .success-screen {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 192, 203, 0.95);
+            z-index: 20;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .success-screen h2 {
+            color: #d81b60;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .success-screen p {
+            color: #333;
+            font-size: 18px;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Khung chính -->
+    <div class="container" id="mainCard">
+        <h1>Gửi Công Chúa Của Anh 💖</h1>
+        <div class="message" id="textContent">
+            Nhân ngày 20/10, anh có một câu hỏi nhỏ muốn gửi đến em. Em đã sẵn sàng nhận trọn vẹn tình yêu và món quà bất ngờ từ anh chưa nào? 🥰
+        </div>
+        <div class="buttons" id="btnGroup">
+            <button id="yesBtn" onclick="sayYes()">Đồng ý luôn! 💕</button>
+            <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">Không thích đâu 😛</button>
+        </div>
+    </div>
+
+    <!-- Màn hình bất ngờ khi đồng ý -->
+    <div class="success-screen" id="successScreen">
+        <h2>Chúc Mừng Ngày 20/10! 🌹✨</h2>
+        <p>
+            Chúc em yêu của anh luôn xinh đẹp, rạng rỡ, ngập tràn hạnh phúc và mãi là đóa hoa đẹp nhất trong tim anh. Cảm ơn em vì đã đến và làm thế giới của anh tuyệt vời hơn! Yêu em ngàn lần ❤️
+        </p>
+    </div>
+
+    <script>
+        // Hiệu ứng nút "Không thích đâu" chạy trốn khi rê chuột vào
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - 150);
+            const y = Math.random() * (window.innerHeight - 100);
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        // Khi bấm "Đồng ý"
+        function sayYes() {
+            document.getElementById('successScreen').style.display = 'flex';
+        }
+
+        // Hiệu ứng trái tim rơi liên tục ở nền
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-fall');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's'; // Tốc độ rơi từ 2-5 giây
+            heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300); // Tạo một trái tim mỗi 0.3 giây
+    </script>
+</body>
+</html>
